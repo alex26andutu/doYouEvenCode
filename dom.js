@@ -27,7 +27,7 @@ function swich(){
 
 function change()
 {
-     firstPage.classList.add("hidden");
+     
     congratsPage.classList.remove("hidden");
     
 }
@@ -38,19 +38,23 @@ beginBtn.addEventListener('click', checkUser);
 function checkUser (){
     var myRequest = new XMLHttpRequest;
     myRequest.open("GET", "https://api.github.com/users/" + gitUser.value + "/repos");
-    myRequest.send();
+    
 
-    // myRequest.addEventListener("error", function onError(e){
-    //     userError.classList.add("error");})
+     myRequest.addEventListener("error", function onError(e){
+         debugger
+       userError.classList.add("error");})
 
     myRequest.addEventListener("load", function onLoad(e) {
-        // footerSpinner.classList.add("hidden");
+        firstPage.classList.add("hidden");
         var myResponseAsText = e.srcElement.response;
         var myResponseAsAJSON = JSON.parse(myResponseAsText);
         var x= myResponseAsAJSON.length;
         repoCount.innerHTML= "Congrats! You have " + x + " repos on Github."
       });
-
+      myRequest.send();
+      if(e.srcElement >= 400){
+          
+      }
          
 }
 var list = [a1={ question: "What is CSS (Cascading Style Sheets) and what is its role in web designing ?", answer1: "CSS is a set of rules" , answer2: "CSS is a language ", answer3:"CSS refers to a stylesheet"}]
