@@ -12,62 +12,55 @@
 
 <body>
     <header>
-
         <p> doYouEven
             <br>
-
             <mark>
                 <strong>
-                    < c{}de/>
+                    < c()de/>
                 </strong>
             </mark>
         </p>
-
-
-        <img src="">
-
     </header>
 
     <div class="container">
 
-        <div class=" commonPages" id="frontPage">
-            <form id="formError" class="" >
-                <p> Test your HTML, CSS & JavaScript skills </p>
-                <input id ="userName" placeholder="Your GitHub Username">
-                <span class="errorMessage">Invalid Username</span>
-                <input id="Klvl" placeholder="Knowledge level ( _%)">
-                <p> Are you ready for a challenge? </p>
-            </form>
+    <div class=" commonPages" id="frontPage">
+        <form id="formError" class="">
+            <p> Test your HTML, CSS & JavaScript skills </p>
+            <input id="userName" placeholder="Your GitHub Username">
+            <span class="errorMessage">Invalid Username</span>
+            <input id="Klvl" placeholder="Knowledge level ( _%)">
+            <p> Are you ready for a challenge? </p>
+        </form>
 
-            <button id="beginBtn" >Begin</button>
-        </div>
+        <button id="beginBtn">Begin</button>
+    </div>
+    <div class="hidden commonPages" id="myProgress">
+        <div id="myBar">10%</div>
+    </div>
+    <div class="hidden commonPages" id="idAndRepo">
+        <p id="repoNr"></p> <br><br>
+        <button id="nextButton"> Let's do it! >> </button>
+    </div>
+   
 
-         <div class= "hidden commonPages" id="idAndRepo">
-            <p id="repoNr" ></p>
-            <button id="nextButton"> Let's do it! >> </button>
+    <div class="hidden commonPages" id="quizPage">
 
-        </div>
-       
+        <p id="question"> </p>
 
-        <div class="hidden commonPages" id="quizPage">
-
-            <div id="inputEditor">
-                <p id="question">  </p>
-
-                <input type="radio" name="Raspuns A" value="Raspuns A"> <p id="R1" ></p> <br>
-                <input  type="radio" name="Raspuns A" value="Raspuns B"> <p id="R2"></p> <br>
-                <input  type="radio" name="Raspuns A" value="Raspuns C"> <p id="R3" ></p>
-
-            </div>
-            <img src="">
-
+        <form id="inputEditor">
+            <input id="inputOne" type="radio" name="Intrebare 1" value="Intrebare 1"><br>
+            <input id="inputTwo" type="radio" name="Intrebare 2" value="Intrebare 2"><br>
+            <input id="inputThree" type="radio" name="Intrebare 3" value="Intrebare 3"><br>
+            <br>
             <button> Next >> </button>
-        </div>
+        </form>
+    </div>
 
-        <!-- <div id="resultPage">
+    <!-- <div id="resultPage">
             <p>Congrats .....</p>
            
-        </div> -->
+        <!-- </div> -->
     </div>
     <footer>
         <p>About</p>

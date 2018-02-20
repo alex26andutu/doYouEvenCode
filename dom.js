@@ -10,59 +10,66 @@ var congratsPage = document.getElementById("idAndRepo");
 var repoCount = document.getElementById("repoNr");
 var letsGo = document.getElementById("nextButton");
 var userError = document.getElementById("formError");
-var myQuestion = document.getElementById('question');
-var answerOne = document.getElementById("R1");
-var answerTwo = document.getElementById("R2");
-var answerThree = document.getElementById("R3");
+var myQuestion = document.getElementById("question");
+var progressPage = document.getElementById("myProgress");
 
 
-beginBtn.addEventListener("click", change);
 
-letsGo.addEventListener("click", swich);
-function swich(){
-    congratsPage.classList.add("hidden");
-    secondPage.classList.remove("hidden");
-  
-}
 
-function change()
-{
-     
-    congratsPage.classList.remove("hidden");
+beginBtn.addEventListener("click", move);
+
+function move() {
+    firstPage.classList.add("hidden");
+    progressPage.classList.remove("hidden");
+    var elem = document.getElementById("myBar"); 
+
+    var width = 10;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+            elem.innerHTML = width * 1 + '%';
+        }
+    }
+
+    setTimeout(function (){
+        progressPage.classList.add("hidden");
+        congratsPage.classList.remove("hidden");
+    },1500);
     
 }
 
+// beginBtn.addEventListener("click", change);
+
+// function change(){
+//     firstPage.classList.add("hidden");
+//     congratsPage.classList.remove("hidden");
+// }
+
+letsGo.addEventListener("click", swich);
+
+function swich(){
+    congratsPage.classList.add("hidden");
+    secondPage.classList.remove("hidden");
+}
 
 beginBtn.addEventListener('click', checkUser);
 
 function checkUser (){
     var myRequest = new XMLHttpRequest;
     myRequest.open("GET", "https://api.github.com/users/" + gitUser.value + "/repos");
-    
+    myRequest.send();
 
-     myRequest.addEventListener("error", function onError(e){
-         debugger
-       userError.classList.add("error");})
 
-    myRequest.addEventListener("load", function onLoad(e) {
-        firstPage.classList.add("hidden");
+    myRequest.addEventListener("load", function onLoad(e) {     
         var myResponseAsText = e.srcElement.response;
         var myResponseAsAJSON = JSON.parse(myResponseAsText);
         var x= myResponseAsAJSON.length;
         repoCount.innerHTML= "Congrats! You have " + x + " repos on Github."
-      });
-      myRequest.send();
-      if(e.srcElement >= 400){
-          
-      }
-         
+      });         
 }
-var list = [a1={ question: "What is CSS (Cascading Style Sheets) and what is its role in web designing ?", answer1: "CSS is a set of rules" , answer2: "CSS is a language ", answer3:"CSS refers to a stylesheet"}]
-// a2={ question: "What (Math.random() * 10) + 1 returns ?", answer1: "Returns a random number between 0 (inclusive) and 1 (exclusive)", answer2: "Returns a number, representing a number from 0 up to but not including 1", answer3: "Returns a random number between 1 and 10"},
- 
-
-    myQuestion.innerHTML = list[0].question; // generate a random question from 1 to 10
-    answerOne.innerHTML = list[0].answer1;
-    answerTwo.innerHTML = list[0].answer2;
-    answerThree.innerHTML = list[0].answer3;
 
