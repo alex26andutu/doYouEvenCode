@@ -16,18 +16,47 @@ var NextQuestion = document.getElementById('BtnStart');
 var lastPage = document.getElementById('resultPage');
 
 
-var questions = [{
-  text: 'What is the correct JavaScript syntax to change the content of the HTML element below? <br> < p id="demo" >This is a demonstration.< /p >',
-  answers: [
-    {
-      text: 'document.getElementByName("p").innerHTML = "Hello World!"', value: 0
-    }, {
-      text: '#demo.innerHTML = "Hello World!"', value: 0
-    }, {
-      text: 'document.getElementById("demo").innerHTML = "Hello World!"', value: 1
-    }
-  ]
-}, { text: 'Inside which HTML element do we put the JavaScript?', answers: [{ text: "< javascript >", value: 1 }, { text: "< script >", value: 0 }, { text: "< js >", value: 0 }] }
+var questions = [
+  {
+    text: 'What is the correct JavaScript syntax to change the content of the HTML element below? <br> < p id="demo" >This is a demonstration.< /p >',
+    answers: [{ text: 'document.getElementByName("p").innerHTML = "Hello World!"', value: 0 }, { text: '#demo.innerHTML = "Hello World!"', value: 0 }, { text: 'document.getElementById("demo").innerHTML = "Hello World!"', value: 1 }]
+  },
+  {
+    text: 'Inside which HTML element do we put the JavaScript?',
+    answers: [{ text: "< javascript >", value: 1 }, { text: "< script >", value: 0 }, { text: "< js >", value: 0 }]
+  },
+  {
+    text: 'What does HTML stand for?',
+    answers: [{ text: "Home Tool Markup Language", value: 0 }, { text: 'Hyper Text Markup Language', value: 1 }, { text: 'Hyperlinks and Text Markup Language', value: 0 }]
+  },
+  {
+    text: 'Who is making the Web standards?',
+    answers: [{ text: 'Google', value: 0 }, { text: 'The World Wide Web Consortium', value: 1 }, { text: 'Microsoft', value: 0 }]
+  },
+  {
+    text: 'Choose the correct HTML element for the largest heading.',
+    answers: [{ text: '< head >', value: 0 }, { text: '< h1 >', value: 1 }, { text: '< h6 >', value: 0 }]
+  },
+  {
+    text: 'What is the correct HTML element for inserting a line break?',
+    answers: [{ text: '< break >', value: 0 }, { text: '< lb >', value: 0 }, { text: '< br >', value: 1 }]
+  },
+  {
+    text: 'Where in an HTML document is the correct place to refer to an external style sheet?',
+    answers: [{ text: 'In the < head > section', value: 1 }, { text: 'In the < body > section', value: 0 }, { text: 'At the end of the document', value: 1 }]
+  },
+  {
+    text: 'What is the correct syntax for referring to an external script called "abc.js"?',
+    answers: [{ text: '< script name="abc.js">', value: 0 }, { text: '< script href="abc.js" >', value: 0 }, { text: '< script src="abc.js" >', value: 1 }]
+  },
+  {
+    text: 'How do you create a function in JavaScript?',
+    answers: [{ text: 'function = myFunction()', value: 0 }, { text: 'function myFunction()', value: 1 }, { text: 'function:myFunction()', value: 0 }]
+  },
+  {
+    text: 'How to write an IF statement in JavaScript?',
+    answers: [{ text: 'if i = 5 then', value: 0 }, { text: 'if i == 5 then', value: 0 }, { text: 'if (i == 5)', value: 1 }]
+  }
 ]
 
 
@@ -46,33 +75,6 @@ var userAnswers = [];
 
 // sum += questions[i].answers[j].value;
 
-// var questions = 
-//   ,
-//   'What does HTML stand for?', 'Who is making the Web standards?',
-//   'Choose the correct HTML element for the largest heading.',
-//   'What is the correct HTML element for inserting a line break?',
-//   'Where in an HTML document is the correct place to refer to an external style sheet?',
-//   'What is the correct syntax for referring to an external script called "abc.js"?',
-//   'How do you create a function in JavaScript?',
-//   'How to write an IF statement in JavaScript?'];
-
-// var answers = [
-
-
-//   [{ text: 'Home Tool Markup Language', value: 0 }, { text: 'Hyper Text Markup Language', value: 1 }, { text: 'Hyperlinks and Text Markup Language', value: 0 }],
-//   [{ text: 'Google', value: 0 }, { text: 'The World Wide Web Consortium', value: 1 }, { text: 'Microsoft', value: 0 }],
-//   [{ text: '< head >', value: 0 }, { text: '< h1 >', value: 1 }, { text: '< h6 >', value: 0 }],
-//   [{ text: '< break >', value: 0 }, { text: '< lb >', value: 0 }, { text: '< br >', value: 1 }],
-//   [{ text: 'In the < head > section', value: 1 }, { text: 'In the < body > section', value: 0 }, { text: 'At the end of the document', value: 1 }],
-//   [{ text: '< script name="abc.js">', value: 0 }, { text: '< script href="abc.js" >', value: 0 }, { text: '< script src="abc.js" >', value: 1 }],
-//   [{ text: 'function = myFunction()', value: 0 }, { text: 'function myFunction()', value: 1 }, { text: 'function:myFunction()', value: 0 }],
-//   [{ text: 'if i = 5 then', value: 0 }, { text: 'if i == 5 then', value: 0 }, { text: 'if (i == 5)', value: 1 }]];
-
-
-
-
-// log(answers[7][2].value)
-// log(questions[7])
 
 
 beginBtn.addEventListener('click', checkUser);
@@ -136,7 +138,7 @@ function generateQ(i) {
   myQuestion.innerHTML = questions[i].text;
 
   for (var j = 0; j < questions[i].answers.length; j++)
-    inputForm.innerHTML += '<input class="checkBox" type = "checkbox" value='+ questions[i].answers[j].value + '>' + questions[i].answers[j].text;
+    inputForm.innerHTML += '<input class="checkBox" type = "checkbox" value=' + questions[i].answers[j].value + '>' + questions[i].answers[j].text;
 }
 
 function storeAnswers(i) {
