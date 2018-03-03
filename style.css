@@ -38,13 +38,13 @@ header p {
 
 .container {
   display: block;
-  min-height: 100%; 
+  min-height: 100%;
   position: relative;
   bottom: 0%;
 }
 
 .commonPages {
-  padding: 35px;   
+  padding: 35px;
   margin: 6%;
   position: relative;
   bottom: 0%;
@@ -67,7 +67,6 @@ form input {
   display: inline-block;
 } */
 
-
 button {
   border-radius: 10px 0 10px 0;
   background-color: yellow;
@@ -88,9 +87,9 @@ button {
 }
 
 #inputEditor {
-    border-radius: 15px;
+  border-radius: 15px;
 }
-.error{
+.error {
   display: hidden;
 }
 form.error input {
@@ -100,62 +99,65 @@ form.error .errorMessage {
   display: block;
   color: red;
   font-size: 15px;
-  }
-.errorMessage{
+}
+.errorMessage {
   display: none;
 }
 
-
 footer {
   border-top: 2px solid rgba(0, 225, 255, 0.33);
-  height: 10%;
-  position: absolute;
-  right:0;
-  bottom:0;
-  left:0;
+  height: 70px;
+  position: fixed;
+  bottom: 0;
   background-color: rgb(59, 97, 121);
-  }
+  width: 100%;
+}
+
+footer.a {
+  cursor: pointer;
+}
 
 footer p {
   display: inline-block;
   padding: 15px 35px;
-  font-size: 15px;
+  font-size: 20px;
   color: white;
   text-shadow: 1px 1px 1px black;
+  vertical-align: 25px;
 }
 
-footer img{
+footer img {
   padding: 10px 20px;
-  max-width: 50px; 
+  max-width: 50px;
   max-height: 50px;
+  margin: 0 10px;
 }
 
 #myProgress {
   margin: 13% 25%;
- }
- 
- #myBar {
-   width: 10%;
-   height: 30px;
-   background-color: #4CAF50;
-   text-align: center; /* To center it horizontally (if you want) */
-   line-height: 30px; /* To center it vertically */
-   border: 1px solid rgb(54, 133, 54);
-   /* border-radius: 5%; */
-   color: white;
-  }
+}
 
+#myBar {
+  width: 10%;
+  height: 30px;
+  background-color: #4caf50;
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  border: 1px solid rgb(54, 133, 54);
+  /* border-radius: 5%; */
+  color: white;
+}
 
-  @media (max-height:400px){
-   .container{
-      height: 100% ;
-      width: 100%;
-      display:inline-block;
-   }
+@media (max-height: 400px) {
+  .container {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
   }
-   @media (max-width:400px){
-     .container{
-        width: 100%;
-        display:block;
-     }
-    }
+}
+@media (max-width: 400px) {
+  .container {
+    width: 100%;
+    display: block;
+  }
+}
