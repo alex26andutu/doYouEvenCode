@@ -63,9 +63,10 @@ form input {
   width: 300px;
 }
 
-form p {
+/* form p {
   display: inline-block;
-}
+} */
+
 
 button {
   border-radius: 10px 0 10px 0;
@@ -123,7 +124,11 @@ footer p {
   text-shadow: 1px 1px 1px black;
 }
 
-
+footer img{
+  padding: 10px 20px;
+  max-width: 50px; 
+  max-height: 50px;
+}
 
 #myProgress {
   margin: 13% 25%;
@@ -147,6 +152,7 @@ footer p {
       width: 100%;
       display:inline-block;
    }
+  }
    @media (max-width:400px){
      .container{
         width: 100%;
