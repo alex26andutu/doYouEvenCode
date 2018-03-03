@@ -147,6 +147,7 @@ footer p {
       width: 100%;
       display:inline-block;
    }
+  }
    @media (max-width:400px){
      .container{
         width: 100%;
