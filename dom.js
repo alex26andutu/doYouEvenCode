@@ -164,8 +164,8 @@ function generateQuiz() {
   storeAnswers(i);
   // if (userAnswers[i].length == 0) {
   //   generateQ(i);
-  // } else
-   i++;
+  // } else 
+  i++;
   if (i < list.length) {
     myQuestion.innerHTML = "";
     inputForm.innerHTML = "";
@@ -208,6 +208,6 @@ function storeAnswers(i) {
   userAnswers.push([]);
   for (var a = 0; a < inputList.length; a++)
     if (inputList[a].checked == true) userAnswers[i].push(a)
-   
+    
   log(userAnswers);
 }
