@@ -136,7 +136,7 @@ NextQuestion.addEventListener('click', generateQuiz);
 function generateQuiz() {
   storeAnswers(i);
   if (userAnswers[i].length == 0) {
-    generateQ(i);
+    return;
   } else
     i++;
   if (i < list.length) {
