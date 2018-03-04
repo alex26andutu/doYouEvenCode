@@ -12,13 +12,13 @@
 }
 
 body {
-  /* height: 100%; */
+  width: 100%;
   margin: 0;
   padding-bottom: 15%;
   /* bottom: 0%; */
   background-color: rgb(199, 226, 243);
   /* display: block; */
-  position: relative;
+  position: absolute;
 }
 
 header {
@@ -45,7 +45,7 @@ header p {
 
 .commonPages {
   padding: 35px;
-  margin: 6%;
+  margin: 10%;
   position: relative;
   bottom: 0%;
   height: 100%;
