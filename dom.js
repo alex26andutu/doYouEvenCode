@@ -250,6 +250,14 @@ function storeAnswers(n) {
   log(userAnswers);
 }
 
+
+previousResultsBtn.addEventListener("click", showChart);
+// display results chart
+function showChart() {
+  congratsPage.classList.add("hidden");
+  savedResultsPage.classList.remove("hidden");
+}
+
 var ctx = document.getElementById("myChart");
 
 var chart = new Chart(ctx, {
@@ -274,14 +282,6 @@ var chart = new Chart(ctx, {
     responsive: true
   }
 });
-
-previousResultsBtn.addEventListener("click", showChart);
-
-function showChart() {
-  congratsPage.classList.add("hidden");
-  savedResultsPage.classList.remove("hidden");
-}
-
 
 saveResultBtn.addEventListener("click", goToChart);
 
