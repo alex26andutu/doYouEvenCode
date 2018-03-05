@@ -229,24 +229,7 @@ function generateQuiz() {
   }
 }
 
-saveResultBtn.addEventListener("click", goToChart);
 
-function goToChart() {
-  lastPage.classList.add("hidden");
-  savedResultsPage.classList.remove("hidden");
-  var today = new Date();
-  var resultDate = [];
-  resultDate.push(today.toDateString());
-
-  var resultScore = [];
-  resultScore.push(resultPercentage);
-  lastPage.classList.add("hidden");
-  savedResultsPage.classList.remove("hidden");
-}
-
-// var resultList = [];
-// var savedResult = localStorage.getItem('finalScore');
-// resultList.push(result);
 
 function generateQ(i) {
   myQuestion.innerHTML = list[i].question;
@@ -298,3 +281,25 @@ function showChart() {
   congratsPage.classList.add("hidden");
   savedResultsPage.classList.remove("hidden");
 }
+
+
+saveResultBtn.addEventListener("click", goToChart);
+
+function goToChart() {
+  lastPage.classList.add("hidden");
+  savedResultsPage.classList.remove("hidden");
+  var today = new Date();
+  var resultDate = [];
+  resultDate.push(today.toDateString());
+
+  var resultScore = [];
+  resultScore.push(resultPercentage);
+  lastPage.classList.add("hidden");
+  savedResultsPage.classList.remove("hidden");
+}
+
+
+
+// var resultList = [];
+// var savedResult = localStorage.getItem('finalScore');
+// resultList.push(result);
