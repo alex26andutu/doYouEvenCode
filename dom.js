@@ -19,6 +19,7 @@ var saveResultBtn = document.getElementById("saveResult");
 var previousResultsBtn = document.getElementById("previousResults");
 var savedResultsPage = document.getElementById("savedResults");
 var nextQuizBtn = document.getElementById("getNext");
+var totalScore = document.getElementById("finalScore");
 
 var list = [
   {
@@ -118,6 +119,7 @@ var score = 0;
 var resultPercentage = 0;
 var userAnswers = [];
 var correctAnswers = 0;
+
 
 for (var c = 0; c < list.length; c++) {
   for (var d = 0; d < list[c].answers.length; d++) {
@@ -223,13 +225,10 @@ function generateQuiz() {
       .concat("%");
     log(resultPercentage);
 
-    lastPage.innerHTML +=
-      '<div id="finalScore"> Congrats ! You have achieved a score of </div>' +
-      resultPercentage;
+    totalScore.innerHTML +=
+      " Congrats ! You have achieved a score of " + resultPercentage;
   }
 }
-
-
 
 function generateQ(i) {
   myQuestion.innerHTML = list[i].question;
@@ -250,12 +249,38 @@ function storeAnswers(n) {
   log(userAnswers);
 }
 
-
 previousResultsBtn.addEventListener("click", showChart);
 // display results chart
 function showChart() {
   congratsPage.classList.add("hidden");
   savedResultsPage.classList.remove("hidden");
+}
+
+var resultDate = [];
+var resultScore = [];
+saveResultBtn.addEventListener("click", goToChart);
+
+
+function goToChart() {
+  lastPage.classList.add("hidden");
+  savedResultsPage.classList.remove("hidden");
+
+  var today = new Date();
+  var resultDate = [];
+  resultDate.push(today.toDateString());
+
+  var resultScore = [];
+  
+  resultScore.push(resultPercentage);
+  
+
+  // localStorage.setItem('labels', JSON.stringify(resultDate));
+  // localStorage.setItem('data', JSON.stringify(resultScore));
+
+  // var resultDate = JSON.parse(localStorage.getItem('labels'));
+  // var resultScore = JSON.parse(localStorage.getItem('data'));
+  // log(resultDate)
+  // log(resultScore)
 }
 
 var ctx = document.getElementById("myChart");
@@ -266,13 +291,13 @@ var chart = new Chart(ctx, {
 
   // The data for our dataset
   data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: resultDate,
     datasets: [
       {
         label: "Previous results",
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
-        data: [0, 10, 5, 2, 20, 30, 45]
+        data: resultScore,
       }
     ]
   },
@@ -282,24 +307,3 @@ var chart = new Chart(ctx, {
     responsive: true
   }
 });
-
-saveResultBtn.addEventListener("click", goToChart);
-
-function goToChart() {
-  lastPage.classList.add("hidden");
-  savedResultsPage.classList.remove("hidden");
-  var today = new Date();
-  var resultDate = [];
-  resultDate.push(today.toDateString());
-
-  var resultScore = [];
-  resultScore.push(resultPercentage);
-  lastPage.classList.add("hidden");
-  savedResultsPage.classList.remove("hidden");
-}
-
-
-
-// var resultList = [];
-// var savedResult = localStorage.getItem('finalScore');
-// resultList.push(result);
