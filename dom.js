@@ -249,6 +249,31 @@ function storeAnswers(n) {
   log(userAnswers);
 }
 
+var ctx = document.getElementById("myChart");
+var scoresList = [];
+var chart = new Chart(ctx, {
+  // The type of chart we want to create
+  type: "bar",
+
+  // The data for our dataset
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "Previous results",
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgb(255, 99, 132)",
+        data: [],
+      }
+    ]
+  },
+
+  // Configuration options go here
+  options: {
+    responsive: true
+  }
+});
+
 previousResultsBtn.addEventListener("click", showChart);
 // display results chart
 function showChart() {
@@ -262,48 +287,32 @@ saveResultBtn.addEventListener("click", goToChart);
 
 
 function goToChart() {
+
   lastPage.classList.add("hidden");
   savedResultsPage.classList.remove("hidden");
-
+debugger
   var today = new Date();
-  var resultDate = [];
-  resultDate.push(today.toDateString());
+  var result = resultPercentage.slice(0, -1);
+  var scores = {
+    date: today.toDateString(),
+    scoreNew: result
+  }
 
-  var resultScore = [];
-  
-  resultScore.push(resultPercentage);
-  
+  var scoresList = JSON.parse(localStorage.getItem('chartData'));
 
-  // localStorage.setItem('labels', JSON.stringify(resultDate));
-  // localStorage.setItem('data', JSON.stringify(resultScore));
+  scoresList.push(scores);
 
-  // var resultDate = JSON.parse(localStorage.getItem('labels'));
-  // var resultScore = JSON.parse(localStorage.getItem('data'));
-  // log(resultDate)
-  // log(resultScore)
+  for (var i = 0; i < scoresList.length; i++) {
+    chart.data.labels.push(scoresList[i].date);
+    chart.data.datasets[0].data.push(scoresList[i].scoreNew);
+  }
+
+  localStorage.setItem('chartData', JSON.stringify(scoresList));
+  // addToChart(scores);
+
 }
 
-var ctx = document.getElementById("myChart");
-
-var chart = new Chart(ctx, {
-  // The type of chart we want to create
-  type: "bar",
-
-  // The data for our dataset
-  data: {
-    labels: resultDate,
-    datasets: [
-      {
-        label: "Previous results",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
-        data: resultScore,
-      }
-    ]
-  },
-
-  // Configuration options go here
-  options: {
-    responsive: true
-  }
-});
+// function addToChart(x) {
+//   chart.data.labels.push(x.date);
+//   chart.data.datasets.data.push(x.score);
+// }
