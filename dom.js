@@ -119,6 +119,7 @@ var score = 0;
 var resultPercentage = 0;
 var userAnswers = [];
 var correctAnswers = 0;
+var scoresList = [];
 
 
 for (var c = 0; c < list.length; c++) {
@@ -131,8 +132,10 @@ for (var c = 0; c < list.length; c++) {
 log(compareList);
 
 beginBtn.addEventListener("click", checkUser);
-
+var x ;
 function checkUser() {
+  var x = gitUser.value
+  log(x)
   var myRequest = new XMLHttpRequest();
   myRequest.open(
     "GET",
@@ -156,6 +159,7 @@ function checkUser() {
       }
     }
   });
+ 
 }
 
 // previousResultsBtn.addEventListener('click', change)
@@ -183,6 +187,7 @@ function switchToQuiz() {
 NextQuestion.addEventListener("click", generateQuiz);
 
 function generateQuiz() {
+  
   storeAnswers(i);
   if (userAnswers[i].length == 0) {
     return;
@@ -250,7 +255,7 @@ function storeAnswers(n) {
 }
 
 var ctx = document.getElementById("myChart");
-var scoresList = [];
+
 var chart = new Chart(ctx, {
   // The type of chart we want to create
   type: "bar",
@@ -274,12 +279,7 @@ var chart = new Chart(ctx, {
   }
 });
 
-previousResultsBtn.addEventListener("click", showChart);
-// display results chart
-function showChart() {
-  congratsPage.classList.add("hidden");
-  savedResultsPage.classList.remove("hidden");
-}
+
 
 var resultDate = [];
 var resultScore = [];
@@ -290,29 +290,53 @@ function goToChart() {
 
   lastPage.classList.add("hidden");
   savedResultsPage.classList.remove("hidden");
-debugger
+
   var today = new Date();
   var result = resultPercentage.slice(0, -1);
   var scores = {
+    name: gitUser.value,
     date: today.toDateString(),
     scoreNew: result
+    
   }
+
+
 
   var scoresList = JSON.parse(localStorage.getItem('chartData'));
 
   scoresList.push(scores);
-
+  
   for (var i = 0; i < scoresList.length; i++) {
+    if(scoresList[i].name == gitUser.value){
     chart.data.labels.push(scoresList[i].date);
     chart.data.datasets[0].data.push(scoresList[i].scoreNew);
   }
-
-  localStorage.setItem('chartData', JSON.stringify(scoresList));
-  // addToChart(scores);
-
 }
 
-// function addToChart(x) {
-//   chart.data.labels.push(x.date);
-//   chart.data.datasets.data.push(x.score);
-// }
+  localStorage.setItem('chartData', JSON.stringify(scoresList));
+
+  
+  
+}
+previousResultsBtn.addEventListener("click", showChart);
+// display results chart
+function showChart() {
+  congratsPage.classList.add("hidden");
+  savedResultsPage.classList.remove("hidden");
+  
+  var scoresList = JSON.parse(localStorage.getItem('chartData'));
+
+  if(scoresList){
+     
+      for (var i = 0; i < scoresList.length; i++) {
+        chart.data.labels.push(scoresList[i].date);
+        chart.data.datasets[0].data.push(scoresList[i].scoreNew);
+      }
+    }
+        else {
+          return i=0}
+  }
+
+
+  
+
