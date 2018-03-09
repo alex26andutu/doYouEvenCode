@@ -144,8 +144,8 @@ function checkUser() {
   myRequest.send();
 
   myRequest.addEventListener("load", function onLoad(e) {
-    var myResponseAsText = e.srcElement.response;
-    var a = e.srcElement.status;
+    var myResponseAsText = e.target.response;
+    var a = e.target.status;
     var myResponseAsAJSON = JSON.parse(myResponseAsText);
     var x = myResponseAsAJSON.length;
     //log(a)
@@ -300,10 +300,14 @@ function goToChart() {
     
   }
 
+ 
 
 
   var scoresList = JSON.parse(localStorage.getItem('chartData'));
 
+  if(!scoresList) {
+    scoresList = [];
+  } 
   scoresList.push(scores);
   
   for (var i = 0; i < scoresList.length; i++) {
