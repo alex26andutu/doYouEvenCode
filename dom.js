@@ -157,7 +157,6 @@ function checkUser() {
       }
     }
   });
- 
 }
 
 nextQuizBtn.addEventListener("click", getQuiz);
@@ -166,7 +165,8 @@ function getQuiz() {
   secondPage.classList.remove("hidden");
   myQuestion.innerHTML = "";
   inputForm.innerHTML = "";
-  i =0;
+  i = 0;
+  userAnswers =[];
   generateQ(i);
 }
 
@@ -226,6 +226,7 @@ function generateQuiz() {
     totalScore.innerHTML="";
     totalScore.innerHTML +=
       " Congrats ! You have achieved a score of " + resultPercentage;
+      score = 0;
   }
 }
 
@@ -273,8 +274,6 @@ var chart = new Chart(ctx, {
   }
 });
 
-
-
 var resultDate = [];
 var resultScore = [];
 saveResultBtn.addEventListener("click", goToChart);
@@ -291,7 +290,6 @@ function goToChart() {
     name: gitUser.value,
     date: today.toDateString(),
     scoreNew: result
-    
   }
 
 
