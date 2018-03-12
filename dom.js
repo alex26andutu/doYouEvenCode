@@ -134,8 +134,6 @@ log(compareList);
 beginBtn.addEventListener("click", checkUser);
 var x ;
 function checkUser() {
-  var x = gitUser.value
-  log(x)
   var myRequest = new XMLHttpRequest();
   myRequest.open(
     "GET",
@@ -162,17 +160,13 @@ function checkUser() {
  
 }
 
-// previousResultsBtn.addEventListener('click', change)
-
-// function change (){
-//   congratsPage.classList.add('hidden');
-//   savedResultsPage.classList.remove('hidden');
-// }
-
 nextQuizBtn.addEventListener("click", getQuiz);
 function getQuiz() {
   savedResultsPage.classList.add("hidden");
   secondPage.classList.remove("hidden");
+  myQuestion.innerHTML = "";
+  inputForm.innerHTML = "";
+  i =0;
   generateQ(i);
 }
 
@@ -187,7 +181,7 @@ function switchToQuiz() {
 NextQuestion.addEventListener("click", generateQuiz);
 
 function generateQuiz() {
-  
+
   storeAnswers(i);
   if (userAnswers[i].length == 0) {
     return;
@@ -300,8 +294,6 @@ function goToChart() {
     
   }
 
- 
-
 
   var scoresList = JSON.parse(localStorage.getItem('chartData'));
 
@@ -316,12 +308,10 @@ function goToChart() {
     chart.data.datasets[0].data.push(scoresList[i].scoreNew);
   }
 }
-
   localStorage.setItem('chartData', JSON.stringify(scoresList));
-
-  
   
 }
+
 previousResultsBtn.addEventListener("click", showChart);
 // display results chart
 function showChart() {
@@ -337,8 +327,7 @@ function showChart() {
         chart.data.datasets[0].data.push(scoresList[i].scoreNew);
       }
     }
-        else {
-          return i=0}
+      
   }
 
 
