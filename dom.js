@@ -223,7 +223,7 @@ function generateQuiz() {
       .toString()
       .concat("%");
     log(resultPercentage);
-
+    totalScore.innerHTML="";
     totalScore.innerHTML +=
       " Congrats ! You have achieved a score of " + resultPercentage;
   }
