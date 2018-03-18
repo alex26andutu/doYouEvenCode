@@ -107,7 +107,7 @@ form.error .errorMessage {
 footer {
   border-top: 2px solid rgba(0, 225, 255, 0.33);
   height: 70px;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   background-color: rgb(59, 97, 121);
   width: 100%;
@@ -133,28 +133,13 @@ footer img {
   margin: 0 10px;
 }
 
-#myProgress {
-  margin: 13% 25%;
-}
-
-#myBar {
-  width: 10%;
-  height: 30px;
-  background-color: #4caf50;
-  text-align: center; /* To center it horizontally (if you want) */
-  line-height: 30px; /* To center it vertically */
-  border: 1px solid rgb(54, 133, 54);
-  /* border-radius: 5%; */
-  color: white;
-}
-
-@media (max-height: 400px) {
+/* @media (max-height: 400px) {
   .container {
     height: 100%;
     width: 100%;
     display: inline-block;
   }
-}
+} */
 @media (max-width: 400px) {
   .container {
     width: 100%;

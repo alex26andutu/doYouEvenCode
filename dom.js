@@ -2,137 +2,22 @@ function log(a) {
   console.log(a);
 }
 
-var beginBtn = document.getElementById("beginBtn");
-var firstPage = document.getElementById("frontPage");
-var secondPage = document.getElementById("quizPage");
-var gitUser = document.getElementById("userName");
-var congratsPage = document.getElementById("idAndRepo");
-var repoCount = document.getElementById("repoNr");
-var letsGo = document.getElementById("nextButton");
-var userError = document.getElementById("formError");
-var myQuestion = document.getElementById("question");
-var inputForm = document.getElementById("inputEditor");
-var NextQuestion = document.getElementById("BtnStart");
-var lastPage = document.getElementById("resultPage");
-var knowledgePercentage = document.getElementById("Klvl");
-var saveResultBtn = document.getElementById("saveResult");
-var previousResultsBtn = document.getElementById("previousResults");
-var savedResultsPage = document.getElementById("savedResults");
-var nextQuizBtn = document.getElementById("getNext");
-var totalScore = document.getElementById("finalScore");
+/* initiate a compare list */
 
-var list = [
-  {
-    question:
-      '1. What is the correct JavaScript syntax to change the content of the HTML element below? <br> < p id="demo" >This is a demonstration.< /p >',
-    answers: [
-      {
-        text: 'document.getElementByName("p").innerHTML = "Hello World!"',
-        value: 0
-      },
-      { text: '#demo.innerHTML = "Hello World!"', value: 0 },
-      {
-        text: 'document.getElementById("demo").innerHTML = "Hello World!"',
-        value: 1
-      }
-    ]
-  },
-  {
-    question: "2. Inside which HTML element do we put the JavaScript?",
-    answers: [
-      { text: "< javascript >", value: 0 },
-      { text: "< script >", value: 1 },
-      { text: "< js >", value: 0 }
-    ]
-  },
-  {
-    question: "3. What does HTML stand for?",
-    answers: [
-      { text: "Home Tool Markup Language", value: 0 },
-      { text: "Hyper Text Markup Language", value: 1 },
-      { text: "Hyperlinks and Text Markup Language", value: 0 }
-    ]
-  },
-  {
-    question: "4. Who is making the Web standards?",
-    answers: [
-      { text: "Google", value: 0 },
-      { text: "The World Wide Web Consortium", value: 1 },
-      { text: "Microsoft", value: 0 }
-    ]
-  },
-  {
-    question: "5. Choose the correct HTML element for the largest heading.",
-    answers: [
-      { text: "< head >", value: 0 },
-      { text: "< h1 >", value: 1 },
-      { text: "< h6 >", value: 0 }
-    ]
-  },
-  {
-    question: "6. What is the correct HTML element for inserting a line break?",
-    answers: [
-      { text: "< break >", value: 0 },
-      { text: "< lb >", value: 0 },
-      { text: "< br >", value: 1 }
-    ]
-  },
-  {
-    question:
-      "7. Where in an HTML document is the correct place to refer to an external style sheet?",
-    answers: [
-      { text: "In the < head > section", value: 1 },
-      { text: "In the < body > section", value: 0 },
-      { text: "At the end of the document", value: 1 }
-    ]
-  },
-  {
-    question:
-      '8. What is the correct syntax for referring to an external script called "abc.js"?',
-    answers: [
-      { text: '< script name="abc.js">', value: 0 },
-      { text: '< script href="abc.js" >', value: 0 },
-      { text: '< script src="abc.js" >', value: 1 }
-    ]
-  },
-  {
-    question: "9. How do you create a function in JavaScript?",
-    answers: [
-      { text: "function = myFunction()", value: 0 },
-      { text: "function myFunction()", value: 1 },
-      { text: "function:myFunction()", value: 0 }
-    ]
-  },
-  {
-    question: "10. How to write an IF statement in JavaScript?",
-    answers: [
-      { text: "if i = 5 then", value: 0 },
-      { text: "if i == 5 then", value: 0 },
-      { text: "if (i == 5)", value: 1 }
-    ]
-  }
-];
-
-var compareList = [];
-var i = 0;
-var score = 0;
-var resultPercentage = 0;
-var userAnswers = [];
-var correctAnswers = 0;
-var scoresList = [];
-
-
-for (var c = 0; c < list.length; c++) {
-  for (var d = 0; d < list[c].answers.length; d++) {
-    correctAnswers += list[c].answers[d].value;
+for (let i = 0; i < list.length; i++) {
+  for (let j = 0; j < list[i].answers.length; j++) {
+    correctAnswers += list[i].answers[j].value;
   }
   compareList.push(correctAnswers);
   correctAnswers = 0;
 }
 log(compareList);
 
+
+/* check user */
+
 beginBtn.addEventListener("click", checkUser);
-var x ;
+var x;
 function checkUser() {
   var myRequest = new XMLHttpRequest();
   myRequest.open(
@@ -143,21 +28,23 @@ function checkUser() {
 
   myRequest.addEventListener("load", function onLoad(e) {
     var myResponseAsText = e.target.response;
-    var a = e.target.status;
+    var myStatus = e.target.status;
     var myResponseAsAJSON = JSON.parse(myResponseAsText);
-    var x = myResponseAsAJSON.length;
-    //log(a)
-    if ((a >= 200) & (a < 400)) {
+    var repoNo = myResponseAsAJSON.length;
+
+    if ((myStatus >= 200) & (myStatus < 400)) {
       firstPage.classList.add("hidden");
       congratsPage.classList.remove("hidden");
-      repoCount.innerHTML = "Congrats! You have " + x + " repos on Github.";
+      repoCount.innerHTML = "Congrats! You have " + repoNo + " repos on Github.";
     } else {
-      if (a >= 400) {
+      if (myStatus >= 400) {
         userError.classList.add("error");
       }
     }
   });
 }
+
+/* get first question */
 
 nextQuizBtn.addEventListener("click", getQuiz);
 function getQuiz() {
@@ -166,7 +53,7 @@ function getQuiz() {
   myQuestion.innerHTML = "";
   inputForm.innerHTML = "";
   i = 0;
-  userAnswers =[];
+  userAnswers = [];
   generateQ(i);
 }
 
@@ -177,6 +64,8 @@ function switchToQuiz() {
   secondPage.classList.remove("hidden");
   generateQ(i);
 }
+
+/* generate following questions, store answers */
 
 NextQuestion.addEventListener("click", generateQuiz);
 
@@ -193,29 +82,18 @@ function generateQuiz() {
   } else {
     secondPage.classList.add("hidden");
     lastPage.classList.remove("hidden");
-
-    for (var a = 0; a < userAnswers.length; a++)
-      for (var b = 0; b < userAnswers[a].length; b++) {
-        // debugger
-        if (list[a].answers[userAnswers[a][b]].value == 0) {
-          break;
-        } else if (
-          (list[a].answers[userAnswers[a][b]].value == 1 &&
-            b < userAnswers[a].length - 1 &&
-            list[a].answers[userAnswers[a][b + 1]].value == 0) ||
-          (list[a].answers[userAnswers[a][b]].value == 1 &&
-            b < userAnswers[a].length - 2 &&
-            list[a].answers[userAnswers[a][b + 2]].value == 0)
-        ) {
-          break;
-        } else {
-          if (userAnswers[a].length == compareList[a]) {
-            log(userAnswers[a].length);
-            log(compareList[a]);
-            score += 1;
-            break;
-          }
+    debugger
+    var noOfCorrectAnswers = 0;
+    for (let a = 0; a < userAnswers.length; a++)
+      for (let b = 0; b < userAnswers[a].length; b++) {
+        if (list[a].answers[b].value == 1 && b < userAnswers[a].length) {
+          noOfCorrectAnswer += 1;
         }
+         else
+          if (noOfCorrectAnswers == compareList[a]) {
+            score += 1;
+          }
+          noOfCorrectAnswers = 0;
       }
     log(score);
 
@@ -223,12 +101,16 @@ function generateQuiz() {
       .toString()
       .concat("%");
     log(resultPercentage);
-    totalScore.innerHTML="";
+    totalScore.innerHTML = "";
     totalScore.innerHTML +=
       " Congrats ! You have achieved a score of " + resultPercentage;
-      score = 0;
+    score = 0;
   }
 }
+
+
+
+/* secondary functions */
 
 function generateQ(i) {
   myQuestion.innerHTML = list[i].question;
@@ -248,6 +130,8 @@ function storeAnswers(n) {
     }
   log(userAnswers);
 }
+
+// chart initialization
 
 var ctx = document.getElementById("myChart");
 
@@ -278,6 +162,7 @@ var resultDate = [];
 var resultScore = [];
 saveResultBtn.addEventListener("click", goToChart);
 
+/* local storage */
 
 function goToChart() {
 
@@ -292,22 +177,21 @@ function goToChart() {
     scoreNew: result
   }
 
-
   var scoresList = JSON.parse(localStorage.getItem('chartData'));
 
-  if(!scoresList) {
+  if (!scoresList) {
     scoresList = [];
-  } 
-  scoresList.push(scores);
-  
-  for (var i = 0; i < scoresList.length; i++) {
-    if(scoresList[i].name == gitUser.value){
-    chart.data.labels.push(scoresList[i].date);
-    chart.data.datasets[0].data.push(scoresList[i].scoreNew);
   }
-}
+  scoresList.push(scores);
+
+  for (var i = 0; i < scoresList.length; i++) {
+    if (scoresList[i].name == gitUser.value) {
+      chart.data.labels.push(scoresList[i].date);
+      chart.data.datasets[0].data.push(scoresList[i].scoreNew);
+    }
+  }
   localStorage.setItem('chartData', JSON.stringify(scoresList));
-  
+
 }
 
 previousResultsBtn.addEventListener("click", showChart);
@@ -315,19 +199,19 @@ previousResultsBtn.addEventListener("click", showChart);
 function showChart() {
   congratsPage.classList.add("hidden");
   savedResultsPage.classList.remove("hidden");
-  
+
   var scoresList = JSON.parse(localStorage.getItem('chartData'));
 
-  if(scoresList){
-     
-      for (var i = 0; i < scoresList.length; i++) {
-        chart.data.labels.push(scoresList[i].date);
-        chart.data.datasets[0].data.push(scoresList[i].scoreNew);
-      }
+  if (scoresList) {
+
+    for (var i = 0; i < scoresList.length; i++) {
+      chart.data.labels.push(scoresList[i].date);
+      chart.data.datasets[0].data.push(scoresList[i].scoreNew);
     }
-      
   }
 
+}
 
-  
+
+
 
