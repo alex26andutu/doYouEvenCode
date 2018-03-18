@@ -17,7 +17,7 @@ log(compareList);
 /* check user */
 
 beginBtn.addEventListener("click", checkUser);
-var x;
+
 function checkUser() {
   var myRequest = new XMLHttpRequest();
   myRequest.open(
@@ -65,7 +65,7 @@ function switchToQuiz() {
   generateQ(i);
 }
 
-/* generate following questions, store answers */
+/* generate the following questions, store answers */
 
 NextQuestion.addEventListener("click", generateQuiz);
 
@@ -84,16 +84,28 @@ function generateQuiz() {
     lastPage.classList.remove("hidden");
     debugger
     var noOfCorrectAnswers = 0;
-    for (let a = 0; a < userAnswers.length; a++)
-      for (let b = 0; b < userAnswers[a].length; b++) {
-        if (list[a].answers[b].value == 1 && b < userAnswers[a].length) {
-          noOfCorrectAnswer += 1;
-        }
-         else
-          if (noOfCorrectAnswers == compareList[a]) {
+    for (var a = 0; a < userAnswers.length; a++)
+      for (var b = 0; b < userAnswers[a].length; b++) {
+        // debugger
+        if (list[a].answers[userAnswers[a][b]].value == 0) {
+          break;
+        } else if (
+          (list[a].answers[userAnswers[a][b]].value == 1 &&
+            b < userAnswers[a].length - 1 &&
+            list[a].answers[userAnswers[a][b + 1]].value == 0) ||
+          (list[a].answers[userAnswers[a][b]].value == 1 &&
+            b < userAnswers[a].length - 2 &&
+            list[a].answers[userAnswers[a][b + 2]].value == 0)
+        ) {
+          break;
+        } else {
+          if (userAnswers[a].length == compareList[a]) {
+            log(userAnswers[a].length);
+            log(compareList[a]);
             score += 1;
+            break;
           }
-          noOfCorrectAnswers = 0;
+        }
       }
     log(score);
 
