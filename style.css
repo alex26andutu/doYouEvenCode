@@ -82,8 +82,16 @@ button {
   margin: 20px 0 60px 0;
 }
 
-#inputEditor input {
-  margin: 15px;
+.checkBox {
+  margin: 0px;
+
+display: inline-block;
+
+width: 10px;
+
+position: relative;
+
+transform: translate(-4000%, -10%);
 }
 
 #inputEditor {

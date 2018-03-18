@@ -82,19 +82,31 @@ function generateQuiz() {
   } else {
     secondPage.classList.add("hidden");
     lastPage.classList.remove("hidden");
-    debugger
-    var noOfCorrectAnswers = 0;
-    for (let a = 0; a < userAnswers.length; a++)
-      for (let b = 0; b < userAnswers[a].length; b++) {
-        if (list[a].answers[b].value == 1 && b < userAnswers[a].length) {
-          noOfCorrectAnswer += 1;
-        }
-         else
-          if (noOfCorrectAnswers == compareList[a]) {
-            score += 1;
+    
+    
+    for (var a = 0; a < userAnswers.length; a++)
+        for (var b = 0; b < userAnswers[a].length; b++) {
+          // debugger
+          if (list[a].answers[userAnswers[a][b]].value == 0) {
+            break;
+          } else if (
+            (list[a].answers[userAnswers[a][b]].value == 1 &&
+              b < userAnswers[a].length - 1 &&
+              list[a].answers[userAnswers[a][b + 1]].value == 0) ||
+            (list[a].answers[userAnswers[a][b]].value == 1 &&
+              b < userAnswers[a].length - 2 &&
+              list[a].answers[userAnswers[a][b + 2]].value == 0)
+          ) {
+            break;
+          } else {
+            if (userAnswers[a].length == compareList[a]) {
+              log(userAnswers[a].length);
+              log(compareList[a]);
+              score += 1;
+              break;
+            }
           }
-          noOfCorrectAnswers = 0;
-      }
+        }
     log(score);
 
     resultPercentage = Math.round(score / compareList.length * 100)
@@ -117,7 +129,7 @@ function generateQ(i) {
 
   for (var j = 0; j < list[i].answers.length; j++)
     inputForm.innerHTML +=
-      '<input class="checkBox" type = "checkbox">' + list[i].answers[j].text;
+    '<p>' + '<input class="checkBox" type = "checkbox">' + list[i].answers[j].text + '</p>'
 }
 
 function storeAnswers(n) {
