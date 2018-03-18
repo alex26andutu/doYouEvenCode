@@ -17,7 +17,7 @@ log(compareList);
 /* check user */
 
 beginBtn.addEventListener("click", checkUser);
-var x;
+
 function checkUser() {
   var myRequest = new XMLHttpRequest();
   myRequest.open(
@@ -65,7 +65,7 @@ function switchToQuiz() {
   generateQ(i);
 }
 
-/* generate following questions, store answers */
+/* generate the following questions, store answers */
 
 NextQuestion.addEventListener("click", generateQuiz);
 
