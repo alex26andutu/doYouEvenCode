@@ -1,7 +1,7 @@
 function log(a) {
   console.log(a);
 }
-
+var userError = document.getElementById("formError");
 /* initiate a compare list */
 
 for (let i = 0; i < list.length; i++) {
@@ -19,12 +19,18 @@ log(compareList);
 beginBtn.addEventListener("click", checkUser);
 
 function checkUser() {
+  
   var myRequest = new XMLHttpRequest();
   myRequest.open(
     "GET",
     "https://api.github.com/users/" + gitUser.value + "/repos"
   );
+  
   myRequest.send();
+  myRequest.addEventListener("error", function applyError(){
+    userError.classList.add("internetError");
+  })
+ 
 
   myRequest.addEventListener("load", function onLoad(e) {
     var myResponseAsText = e.target.response;

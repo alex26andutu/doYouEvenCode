@@ -84,14 +84,10 @@ button {
 
 .checkBox {
   margin: 0px;
-
-display: inline-block;
-
-width: 10px;
-
-position: relative;
-
-transform: translate(-4000%, -10%);
+  display: inline-block;
+  width: 10px;
+  position: relative;
+  transform: translate(-4000%, -10%);
 }
 
 #inputEditor {
@@ -110,6 +106,25 @@ form.error .errorMessage {
 }
 .errorMessage {
   display: none;
+}
+/* no internet error message */
+.internetError{
+  display: hidden;
+}
+form.internetError input {
+  border: 2px solid red;
+}
+form.internetError .internetMessage {
+  display: block;
+  color: red;
+  font-size: 15px;
+  }
+.internetMessage{
+  display: none;
+}
+form.internetError p{
+  text-decoration: underline;
+  text-decoration-color: red;
 }
 
 footer {

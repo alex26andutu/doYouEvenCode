@@ -33,7 +33,7 @@ var list = [
     answers: [
       { text: '#demo.innerHTML = "Hello World!"', value: 0 },
       { text: 'document.getElementById("demo").innerHTML = "Hello World!"', value: 1 },
-      { text: 'document.getElementByName("p").innerHTML = "Hello World!', value: 0 }
+      { text: 'document.getElementByName("p").innerHTML = "Hello World!"', value: 0 }
     ]
   },
   {
