@@ -14,15 +14,11 @@
 body {
   width: 100%;
   margin: 0;
-  padding-bottom: 15%;
   /* bottom: 0%; */
   background-color: rgb(199, 226, 243);
-  /* display: block; */
-  position: absolute;
 }
 
 header {
-  height: 20%;
   background-image: url("https://images.unsplash.com/photo-1489389944381-3471b5b30f04?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4868cc90c3c515fb1316574d9aff1640&auto=format&fit=crop&w=1050&q=80");
   background-repeat: no-repeat;
   background-size: 100%;
@@ -36,22 +32,14 @@ header p {
   padding: 15px;
 }
 
-.container {
-  display: block;
-  min-height: 100%;
-  position: relative;
-  /* bottom: 0%; */
-}
 
 .commonPages {
   padding: 35px;
-  margin: 10%;
-  position: relative;
+  margin: 7%;
   bottom: 0%;
-  height: 100%;
 }
 
-form input {
+#userName, #Klvl {
   position: relative;
   display: block;
   left: 50%;
@@ -62,10 +50,6 @@ form input {
   border-color: lemonchiffon;
   width: 300px;
 }
-
-/* form p {
-  display: inline-block;
-} */
 
 button {
   border-radius: 10px 0 10px 0;
@@ -86,8 +70,7 @@ button {
   margin: 0px;
   display: inline-block;
   width: 10px;
-  position: relative;
-  transform: translate(-4000%, -10%);
+  margin-right: 15px;
 }
 
 #inputEditor {
@@ -130,13 +113,12 @@ form.internetError p{
 footer {
   border-top: 2px solid rgba(0, 225, 255, 0.33);
   height: 70px;
-  /* position: absolute; */
   bottom: 0;
   background-color: rgb(59, 97, 121);
   width: 100%;
 }
 
-footer.a {
+footer a {
   cursor: pointer;
 }
 
@@ -156,13 +138,6 @@ footer img {
   margin: 0 10px;
 }
 
-/* @media (max-height: 400px) {
-  .container {
-    height: 100%;
-    width: 100%;
-    display: inline-block;
-  }
-} */
 @media (max-width: 400px) {
   .container {
     width: 100%;

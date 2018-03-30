@@ -135,7 +135,7 @@ function generateQ(i) {
 
   for (var j = 0; j < list[i].answers.length; j++)
     inputForm.innerHTML +=
-    '<p>' + '<input class="checkBox" type = "checkbox">' + list[i].answers[j].text + '</p>'
+    '<p><input class="checkBox" type = "checkbox">' + list[i].answers[j].text + '</p>'
 }
 
 function storeAnswers(n) {
