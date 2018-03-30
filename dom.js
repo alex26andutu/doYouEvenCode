@@ -16,6 +16,8 @@ log(compareList);
 
 /* check user */
 
+var contor=1;
+
 beginBtn.addEventListener("click", checkUser);
 
 function checkUser() {
@@ -58,7 +60,7 @@ function getQuiz() {
   secondPage.classList.remove("hidden");
   myQuestion.innerHTML = "";
   inputForm.innerHTML = "";
-  i = 0;
+  i = Math.floor((Math.random()*list.length));
   userAnswers = [];
   generateQ(i);
 }
@@ -68,6 +70,7 @@ letsGo.addEventListener("click", switchToQuiz);
 function switchToQuiz() {
   congratsPage.classList.add("hidden");
   secondPage.classList.remove("hidden");
+  i = Math.floor((Math.random()*list.length));
   generateQ(i);
 }
 
@@ -80,10 +83,11 @@ function generateQuiz() {
   storeAnswers(i);
   if (userAnswers[i].length == 0) {
     return;
-  } else i++;
-  if (i < list.length) {
+  } else contor++;
+  if (contor < 11) {
     myQuestion.innerHTML = "";
     inputForm.innerHTML = "";
+    i= Math.floor((Math.random()*list.length));
     generateQ(i);
   } else {
     secondPage.classList.add("hidden");
@@ -131,7 +135,7 @@ function generateQuiz() {
 /* secondary functions */
 
 function generateQ(i) {
-  myQuestion.innerHTML = list[i].question;
+  myQuestion.innerHTML = `${contor}`+ ". " + list[i].question;
 
   for (var j = 0; j < list[i].answers.length; j++)
     inputForm.innerHTML +=
@@ -229,7 +233,6 @@ function showChart() {
   }
 
 }
-
 
 
 
