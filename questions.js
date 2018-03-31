@@ -111,7 +111,7 @@ var list = [
     ]
   },
   {
-      question: "The external JavaScript file must contain the <script> tag.",
+      question: "The external JavaScript file must contain the < script > tag.",
       answers: [
         { text: "True", value: 0 },
         { text: "False", value: 1 }
@@ -155,26 +155,17 @@ var list = [
     {
       question: 'How can you add a comment in a JavaScript?',
       answers: [
-        { text: "<!--This is a comment-->", value: 1 },
-        { text: "'This is a comment", value: 0 },
+        { text: "< !--This is a comment-- >", value: 1 },
+        { text: "'This is a comment'", value: 0 },
         { text: " //This is a comment", value: 1 }
       ]
     },
     {
       question: 'How to insert a comment that has more than one line?',
       answers: [
-        { text: '/*This comment has more than one line*/', value: 1 },
-        { text: "/This comment has more than one line//", value: 1 },
-        { text: " <!--This comment has more than one line-->", value: 1 }
-      ]
-    },
-    {
-      question: '',
-      answers: [
-        { text: "", value: 0 },
-        { text: "", value: 1 },
-        { text: "", value: 0 },
-        { text: "", value: 0}
+        { text: '/* This comment has more than one line */', value: 1 },
+        { text: "/ This comment has more than one line //", value: 1 },
+        { text: " < !--This comment has more than one line-- >", value: 1 }
       ]
     },
     {
@@ -291,9 +282,9 @@ var list = [
     {
       question: 'What is the correct HTML for referring to an external style sheet?',
       answers: [
-        { text: '<stylesheet> mystyle.css </stylesheet>', value: 0 },
-        { text: '<link rel="stylesheet" type="text/css" href="mystyle.css">', value: 1 },
-        { text: '<style src="mystyle.css">', value: 0 }
+        { text: '< stylesheet > mystyle.css < /stylesheet >', value: 0 },
+        { text: '< link rel="stylesheet" type="text/css" href="mystyle.css" >', value: 1 },
+        { text: '< style src="mystyle.css" >', value: 0 }
       ]
     },
     {
@@ -349,7 +340,7 @@ var list = [
       question: 'What is the correct CSS syntax for making all the <p> elements bold?',
       answers: [
         { text: "p {font-weight:bold;}", value: 1 },
-        { text: '<p style="text-size:bold;">', value: 0 },
+        { text: '< p style="text-size:bold;" >', value: 0 },
         { text: "p {text-size:bold;}", value: 0 }
       ]
     },

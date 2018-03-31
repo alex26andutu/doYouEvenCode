@@ -127,6 +127,10 @@ function generateQuiz() {
     totalScore.innerHTML +=
       " Congrats ! You have achieved a score of " + resultPercentage;
     score = 0;
+
+    if(contor > 10){
+     contor = 1;
+    }
   }
 }
 
