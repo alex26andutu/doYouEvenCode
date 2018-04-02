@@ -94,7 +94,9 @@ function generateQuiz() {
     lastPage.classList.remove("hidden");
     
     
-    for (var a = 0; a < userAnswers.length; a++)
+    for (var a = 0; a < userAnswers.length; a++){
+      if (!userAnswers[a]) continue
+
         for (var b = 0; b < userAnswers[a].length; b++) {
           // debugger
           if (list[a].answers[userAnswers[a][b]].value == 0) {
@@ -117,6 +119,7 @@ function generateQuiz() {
             }
           }
         }
+      }
     log(score);
 
     resultPercentage = Math.round(score / compareList.length * 100)
@@ -139,7 +142,8 @@ function generateQuiz() {
 /* secondary functions */
 
 function generateQ(i) {
-  myQuestion.innerHTML = `${contor}`+ ". " + list[i].question;
+  
+  myQuestion.innerHTML = list[i].question;
 
   for (var j = 0; j < list[i].answers.length; j++)
     inputForm.innerHTML +=
@@ -147,8 +151,9 @@ function generateQ(i) {
 }
 
 function storeAnswers(n) {
+  userAnswers[n]= []
   var inputList = document.getElementsByClassName("checkBox");
-  userAnswers.push([]);
+  // userAnswers.push([]);
 
   for (var p = 0; p < inputList.length; p++)
     if (inputList[p].checked == true) {
